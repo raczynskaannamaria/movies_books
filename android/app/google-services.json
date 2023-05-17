@@ -29,6 +29,13 @@
             {
               "client_id": "1039053945678-rca5rt9qjvcrvt8ccv7dvpl3jsgq6ndu.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1039053945678-0mig55ci0d02l8542eksjdc6kc7qhfn0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.annaraczynska.moviesBooks"
+              }
             }
           ]
         }
