@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movies_books/features/auth/auth_gate.dart';
+import 'package:movies_books/features/presentation/app_colors.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      backgroundColor: AppColor.alto,
       body: Container(
         width: double.infinity,
         child: Column(
@@ -19,7 +21,7 @@ class OnBoardingScreen extends StatelessWidget {
             const Text(
               "Welcome to xxxx App",
               style: TextStyle(
-                color: Colors.black,
+                color: AppColor.cello,
                 fontSize: 27,
                 fontWeight: FontWeight.w700,
               ),
@@ -29,7 +31,7 @@ class OnBoardingScreen extends StatelessWidget {
             ),
             const Text(
               "Keep all your Media reviews in one place!",
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 16, color: AppColor.cello),
             ),
             const SizedBox(
               height: 50,
@@ -48,7 +50,9 @@ class OnBoardingScreen extends StatelessWidget {
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                          color: Colors.black12, blurRadius: 5, spreadRadius: 2)
+                          color: AppColor.waterloo,
+                          blurRadius: 5,
+                          spreadRadius: 2)
                     ],
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(16),
@@ -62,7 +66,9 @@ class OnBoardingScreen extends StatelessWidget {
                         "Review all movies, TV series, books and video games that you seen or read",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w600),
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            color: AppColor.cello),
                       ),
                     ),
                     const Padding(
@@ -80,7 +86,7 @@ class OnBoardingScreen extends StatelessWidget {
                       padding: EdgeInsets.only(left: 15, right: 15),
                       child: MaterialButton(
                         minWidth: double.infinity,
-                        color: Colors.white,
+                        color: AppColor.alto,
                         elevation: 2,
                         onPressed: () {
                           Get.to(() => const AuthGate());
