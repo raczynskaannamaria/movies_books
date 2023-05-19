@@ -5,6 +5,7 @@ import 'package:movies_books/features/auth/auth_gate.dart';
 import 'package:movies_books/features/onboarding/onboarding_page.dart';
 import 'package:movies_books/firebase_options.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 //configureDependencies();
