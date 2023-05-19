@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movies_books/features/auth/auth_gate.dart';
-import 'package:movies_books/features/presentation/app_colors.dart';
+import 'package:movies_books/core/login/auth/auth_gate.dart';
+import 'package:movies_books/core/resources/app_colors.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   @override

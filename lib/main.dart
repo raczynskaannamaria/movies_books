@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movies_books/features/auth/auth_gate.dart';
-import 'package:movies_books/features/onboarding/onboarding_page.dart';
+import 'package:movies_books/core/login/auth/auth_gate.dart';
+import 'package:movies_books/presentation/onboarding/onboarding_page.dart';
 import 'package:movies_books/firebase_options.dart';
 
 

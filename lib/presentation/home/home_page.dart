@@ -3,14 +3,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterfire_ui/firestore.dart';
-import 'package:movies_books/features/account/my_account_page_content.dart';
-import 'package:movies_books/features/auth/user_profile.dart';
-import 'package:movies_books/features/presentation/app_colors.dart';
-import 'package:movies_books/pages/TV_page_content.dart';
-import 'package:movies_books/pages/book_page_content.dart';
-import 'package:movies_books/pages/game_page_content.dart';
-import 'package:movies_books/pages/movie_page_content.dart';
-import 'package:movies_books/pages/wishlist_page_content.dart';
+import 'package:movies_books/core/login/account/my_account_page_content.dart';
+import 'package:movies_books/core/login/auth/user_profile.dart';
+import 'package:movies_books/core/resources/app_colors.dart';
+import 'package:movies_books/presentation/tv/TV_page_content.dart';
+import 'package:movies_books/presentation/book/book_page_content.dart';
+import 'package:movies_books/presentation/game/game_page_content.dart';
+import 'package:movies_books/presentation/movie/movie_page_content.dart';
+import 'package:movies_books/presentation/wishlist/wishlist_page_content.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key, required this.currentUser}) : super(key: key);
