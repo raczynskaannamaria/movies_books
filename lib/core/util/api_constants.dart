@@ -1,7 +1,16 @@
 class ApiConstants {
   ApiConstants._();
 
-  final String base_URL = 'https://api.themoviedb.org/3';
-  final String API_key = '2e0db4bf985c85cdfdecd37bb37b42ec';
-  final String image_url = 'https://image.tmdb.org/t/p/w500';
+  static const String base_URL = 'https://api.themoviedb.org/3';
+  static const String API_key = '?api_key=2e0db4bf985c85cdfdecd37bb37b42ec';
+
+  static const String trending_URL =
+      'https://api.themoviedb.org/3/trending/movie/day?api_key=2e0db4bf985c85cdfdecd37bb37b42ec';
+  static const String latest_URL =
+      'https://api.themoviedb.org/3/movie/latest?api_key=2e0db4bf985c85cdfdecd37bb37b42ec';
+  static const String toprated_URL =
+      'https://api.themoviedb.org/3/movie/top_rated?api_key=2e0db4bf985c85cdfdecd37bb37b42ec';
+  static const String upcoming_URL =
+      'https://api.themoviedb.org/3/movie/upcoming?api_key=2e0db4bf985c85cdfdecd37bb37b42ec';
+  static String image_URL = 'https://image.tmdb.org/t/p/w500';
 }
