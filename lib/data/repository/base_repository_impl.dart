@@ -1,17 +1,51 @@
 import 'package:dartz/dartz.dart';
 import 'package:movies_books/core/error/failure.dart';
+import 'package:movies_books/data/repository/base_repository.dart';
+import 'package:movies_books/data/source/movie_remote_data_source.dart';
 import 'package:movies_books/domain/entities/movie_entity.dart';
 
-abstract class BaseRepository {
-  Future<Either<Failure, List<MovieEntity>>> getTrending();
+class BaseRepositoryImpl extends BaseRepository {
+  DataSourceRepository dataSourceRepository;
 
-  //Future<Either<Failure<List<MovieEntity>>> getLatest();
+  BaseRepositoryImpl(this.dataSourceRepository);
 
-  //Future<Either<Failure<List<MovieEntity>>> getTopRated();
+  @override
+  Future<Either<Failure, List<MovieEntity>>> getTrending() async {
+    final result = await dataSourceRepository.getTrending();
+    try {
+      return Right(result);
+    } on ServerFailure catch (failure) {
+      return Left(failure);
+    }
+  }
 
-  //sFuture<Either<Failure<List<MovieEntity>>> getUpcoming();
+  @override
+  Future<Either<Failure, List<MovieEntity>>> getLatest() async {
+    final result = await dataSourceRepository.getLatest();
+    try {
+      return Right(result);
+    } on ServerFailure catch (failure) {
+      return Left(failure);
+    }
+  }
 
+  @override
+  Future<Either<Failure, List<MovieEntity>>> getTopRated() async {
+    final result = await dataSourceRepository.getTopRated();
+    try {
+      return Right(result);
+    } on ServerFailure catch (failure) {
+      return Left(failure);
+    }
+  }
 
-
-
+  @override
+  Future<Either<Failure, List<MovieEntity>>> getUpcoming() async {
+    final result = await dataSourceRepository.getUpcoming();
+    try {
+      return Right(result);
+    } on ServerFailure catch (failure) {
+      return Left(failure);
+    }
+  }
 }

@@ -5,7 +5,6 @@ class MovieEntity extends Equatable {
 
   final int id;
   final String title;
-
   final String overview;
   final List<int> genreIds;
   final String posterPath;
