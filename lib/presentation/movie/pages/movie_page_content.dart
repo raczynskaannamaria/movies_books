@@ -7,6 +7,7 @@ import 'package:movies_books/core/services/service_locator.dart';
 import 'package:movies_books/core/widgets/movies_list.dart';
 import 'package:movies_books/core/widgets/title_section.dart';
 import 'package:movies_books/presentation/movie/bloc/movie_bloc.dart';
+import 'package:movies_books/presentation/movie/pages/search_page.dart';
 
 class MoviePageContent extends StatelessWidget {
   const MoviePageContent({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class MoviePageContent extends StatelessWidget {
         child: Scaffold(
             body: SingleChildScrollView(
                 child: Column(
-          children: [
+          children:const [
             SearchSection(),
             TitleSection(isLoading: false, title: 'TRENDING'),
             MoviesList(),
@@ -39,33 +40,35 @@ class SearchSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Texts.text1(string: 'Find a Movie'),
-            const Padding(
-                padding: EdgeInsets.only(top: 25),
-                child: TextField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(width: 0, style: BorderStyle.none),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15.0),
-                          ),
-                        ),
-                        contentPadding: EdgeInsets.symmetric(vertical: 18),
-                        filled: true,
-                        fillColor: AppColor.alto,
-                        hintText: 'Find a movie',
-                        hintStyle:
-                            TextStyle(color: AppColor.waterloo, fontSize: 14),
-                        prefixIcon: Icon(
-                          Icons.search_outlined,
-                          color: AppColor.cello,
-                        )))),
-          ],
-        ));
+      padding: EdgeInsets.all(5),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SearchPage(),
+                  ));
+            },
+            child: Container(
+              margin: EdgeInsets.only(top: 20),
+              child: Card(
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14)),
+                color: AppColor.alto,
+                child: ListTile(
+                  leading: Icon(Icons.search_outlined),
+                  title:
+                      Texts.text2(string: "Find a movie", color: AppColor.waterloo),
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }

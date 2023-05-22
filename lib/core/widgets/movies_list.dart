@@ -1,40 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:movies_books/core/resources/app_colors.dart';
+import 'package:movies_books/core/widgets/image_container.dart';
+import 'package:movies_books/domain/entities/movie_entity.dart';
 
 class MoviesList extends StatelessWidget {
   const MoviesList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        height: 200,
-        width: double.infinity,
+    return Container(
+        height: 180,
+        padding: EdgeInsets.only(left: 16),
         child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 6,
-            physics: const BouncingScrollPhysics(),
-            itemBuilder: (context, index) {
-              return Container(
-                  width: 140,
-                  margin: EdgeInsets.all(4),
-                  decoration: BoxDecoration(
-                    color: AppColor.burntSienna,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Stack(
-                    children: [
-                      Container(
-                          width: 40,
-                          height: 30,
-                          margin: EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                              color: AppColor.waterloo,
-                              borderRadius: BorderRadius.circular(6)),
-                          alignment: Alignment.center,
-                          child: Text('9.0',
-                              style: TextStyle(color: AppColor.cello)))
-                    ],
-                  ));
-            }));
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          itemCount: 6,
+          physics: const BouncingScrollPhysics(),
+          itemBuilder: (context, index) => const ImageContainer(image_URL: 'https://image.tmdb.org/t/p/w500/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg'),
+        ));
   }
 }

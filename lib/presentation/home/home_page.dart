@@ -9,7 +9,7 @@ import 'package:movies_books/core/resources/app_colors.dart';
 import 'package:movies_books/presentation/tv/TV_page_content.dart';
 import 'package:movies_books/presentation/book/book_page_content.dart';
 import 'package:movies_books/presentation/game/game_page_content.dart';
-import 'package:movies_books/presentation/movie/movie_page_content.dart';
+import 'package:movies_books/presentation/movie/pages/movie_page_content.dart';
 import 'package:movies_books/presentation/wishlist/wishlist_page_content.dart';
 
 class HomePage extends StatefulWidget {
