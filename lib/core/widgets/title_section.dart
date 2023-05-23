@@ -27,8 +27,8 @@ class TitleSection extends StatelessWidget {
   Widget _buildTitle(BuildContext context) {
     if (isLoading) {
       return Shimmer.fromColors(
-          baseColor: Colors.grey[300]!,
-          highlightColor: Colors.grey[100]!,
+          baseColor: AppColor.cello,
+          highlightColor: AppColor.seaNymph,
           child: Texts.text2(string: title));
     } else {
       return Texts.text2(string: title);
@@ -38,8 +38,8 @@ class TitleSection extends StatelessWidget {
   Widget _buildSeeAll(BuildContext context) {
     if (isLoading) {
       return Shimmer.fromColors(
-          baseColor: Colors.grey[300]!,
-          highlightColor: Colors.grey[100]!,
+          baseColor: AppColor.cello,
+          highlightColor: AppColor.seaNymph,
           child: const Text(
             'See all',
             style: TextStyle(color: AppColor.cello),

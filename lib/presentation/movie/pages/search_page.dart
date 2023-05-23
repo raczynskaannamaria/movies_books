@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_books/core/resources/app_colors.dart';
-import 'package:movies_books/presentation/movie/pages/search_result.dart';
+import 'package:movies_books/core/widgets/search_result.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -20,20 +20,20 @@ class _SearchPageState extends State<SearchPage> {
       body: Column(
         children: [
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.all(15),
             child: TextField(
               controller: _searchController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(
-                    Radius.circular(12),
+                    Radius.circular(20),
                   ),
                 ),
-                contentPadding: EdgeInsets.symmetric(vertical: 10),
+                contentPadding: EdgeInsets.symmetric(vertical: 20),
                 filled: true,
-                fillColor: AppColor.alto,
+                fillColor: Colors.white,
                 hintText: 'Find a movie',
-                hintStyle: TextStyle(color: AppColor.cello, fontSize: 10),
+                hintStyle: TextStyle(color: AppColor.cello, fontSize: 15),
                 prefixIcon:
                     Icon(Icons.search_off_outlined, color: AppColor.cello),
               ),

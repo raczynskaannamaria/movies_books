@@ -5,9 +5,11 @@ import 'package:movies_books/core/resources/app_colors.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ImageContainer extends StatelessWidget {
-  const ImageContainer({Key? key, required this.image_URL}) : super(key: key);
+  const ImageContainer({Key? key, required this.image_URL, required this.rate})
+      : super(key: key);
 
   final String image_URL;
+  final double rate;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,7 @@ class ImageContainer extends StatelessWidget {
                   borderRadius: BorderRadius.circular(4.0),
                 ),
                 child: Text(
-                  '9.0',
+                  '$rate',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
