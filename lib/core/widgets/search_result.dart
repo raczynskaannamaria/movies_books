@@ -10,10 +10,10 @@ class SearchResult extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // to finish
+        // Navigate here
       },
       child: Container(
-          margin: EdgeInsets.only(bottom: 15),
+          margin: EdgeInsets.only(bottom: 20),
           width: double.infinity,
           child: Stack(
             children: [
@@ -26,7 +26,7 @@ class SearchResult extends StatelessWidget {
                 height: 130,
               ),
               Positioned(
-                left: 30,
+                left: 35,
                 top: 0,
                 bottom: 0,
                 child: ClipRRect(
@@ -61,7 +61,7 @@ class SearchResult extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: 20),
-                      Texts.text2(string: 'Title'),
+                      Texts.text2(string: "Title"),
                       SizedBox(height: 40),
                       Texts.text2(string: "Popularity"),
                       Texts.text2(string: "Release"),
@@ -74,3 +74,4 @@ class SearchResult extends StatelessWidget {
     );
   }
 }
+

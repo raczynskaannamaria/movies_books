@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:movies_books/core/resources/app_colors.dart';
+import 'package:movies_books/core/util/api_constants.dart';
 import 'package:movies_books/core/widgets/image_container.dart';
 import 'package:movies_books/domain/entities/movie_entity.dart';
 
 class MoviesList extends StatelessWidget {
-  const MoviesList({super.key});
+  final List<MovieEntity> list;
+  const MoviesList({required this.list, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +16,11 @@ class MoviesList extends StatelessWidget {
         child: ListView.builder(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
-          itemCount: 6,
           physics: const BouncingScrollPhysics(),
-          itemBuilder: (context, index) => const ImageContainer(image_URL: 'https://image.tmdb.org/t/p/w500/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg'),
+          itemCount: list.length,
+          itemBuilder: (context, index) => ImageContainer(
+              image_URL: ApiConstants.image_URL(list[index].posterPath),
+              rate: list[index].voteAverage),
         ));
   }
 }

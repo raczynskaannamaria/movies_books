@@ -16,9 +16,20 @@ class MovieRemoteDataSource extends DataSourceRepository {
     try {
       final response = await Dio().get(ApiConstants.trending_URL);
       if (response.statusCode == 200) {
-        final List<MovieModel> movies = List<MovieModel>.from(
-            response.data['results'].map((json) => MovieModel.fromJson(json)));
-        return movies;
+        final results = response.data['results'];
+        if (results != null) {
+          final List<MovieModel> movies = List<MovieModel>.from(
+            results.map((json) => MovieModel.fromJson(json)),
+          );
+          return movies;
+        } else {
+          print(
+              "MovieRemoteDataSource file: getTopRated method: Results data is null");
+          return []; // Return an empty list when results data is null
+        }
+        // final List<MovieModel> movies = List<MovieModel>.from(
+        //   response.data['results'].map((json) => MovieModel.fromJson(json)));
+        //return movies;
       } else {
         print("MovieRemoteDataSource file : getTrending method :: Else");
         throw ServerFailure(
@@ -34,9 +45,21 @@ class MovieRemoteDataSource extends DataSourceRepository {
     try {
       final response = await Dio().get(ApiConstants.latest_URL);
       if (response.statusCode == 200) {
-        final List<MovieModel> movies = List<MovieModel>.from(
-            response.data['results'].map((json) => MovieModel.fromJson(json)));
-        return movies;
+        final results = response.data['results'];
+        if (results != null) {
+          final List<MovieModel> movies = List<MovieModel>.from(
+            results.map((json) => MovieModel.fromJson(json)),
+          );
+          return movies;
+        } else {
+          print(
+              "MovieRemoteDataSource file: getTopRated method: Results data is null");
+          return [];
+        }
+
+        //final List<MovieModel> movies = List<MovieModel>.from(
+        //  response.data['results'].map((json) => MovieModel.fromJson(json)));
+        //return movies;
       } else {
         print("MovieRemoteDataSource file : getLatest method :: Else");
         throw ServerFailure(
@@ -52,9 +75,20 @@ class MovieRemoteDataSource extends DataSourceRepository {
     try {
       final response = await Dio().get(ApiConstants.toprated_URL);
       if (response.statusCode == 200) {
-        final List<MovieModel> movies = List<MovieModel>.from(
-            response.data['results'].map((json) => MovieModel.fromJson(json)));
-        return movies;
+        final results = response.data['results'];
+        if (results != null) {
+          final List<MovieModel> movies = List<MovieModel>.from(
+            results.map((json) => MovieModel.fromJson(json)),
+          );
+          return movies;
+        } else {
+          print(
+              "MovieRemoteDataSource file: getTopRated method: Results data is null");
+          return [];
+        }
+        //final List<MovieModel> movies = List<MovieModel>.from(
+        //  response.data['results'].map((json) => MovieModel.fromJson(json)));
+        //return movies;
       } else {
         print("MovieRemoteDataSource file : getTopRated method :: Else");
         throw ServerFailure(
@@ -70,9 +104,20 @@ class MovieRemoteDataSource extends DataSourceRepository {
     try {
       final response = await Dio().get(ApiConstants.upcoming_URL);
       if (response.statusCode == 200) {
-        final List<MovieModel> movies = List<MovieModel>.from(
-            response.data['results'].map((json) => MovieModel.fromJson(json)));
-        return movies;
+        final results = response.data['results'];
+        if (results != null) {
+          final List<MovieModel> movies = List<MovieModel>.from(
+            results.map((json) => MovieModel.fromJson(json)),
+          );
+          return movies;
+        } else {
+          print(
+              "MovieRemoteDataSource file: getTopRated method: Results data is null");
+          return [];
+        }
+        //  final List<MovieModel> movies = List<MovieModel>.from(
+        //    response.data['results'].map((json) => MovieModel.fromJson(json)));
+        //return movies;
       } else {
         print("MovieRemoteDataSource file : getUpcoming method :: Else");
         throw ServerFailure(
