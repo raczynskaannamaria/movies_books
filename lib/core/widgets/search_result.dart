@@ -8,7 +8,8 @@ class SearchResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return 
+    GestureDetector(
       onTap: () {
         // Navigate here
       },
@@ -74,4 +75,3 @@ class SearchResult extends StatelessWidget {
     );
   }
 }
-

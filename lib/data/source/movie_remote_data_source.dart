@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:movies_books/core/error/failure.dart';
 import 'package:movies_books/core/util/api_constants.dart';
+import 'package:movies_books/data/models/details_model.dart';
 import 'package:movies_books/data/models/movie_model.dart';
 
 abstract class DataSourceRepository {
@@ -8,6 +9,7 @@ abstract class DataSourceRepository {
   Future<List<MovieModel>> getLatest();
   Future<List<MovieModel>> getTopRated();
   Future<List<MovieModel>> getUpcoming();
+  Future<DetailsModel> getDetails(int movieId);
 }
 
 class MovieRemoteDataSource extends DataSourceRepository {
@@ -120,6 +122,23 @@ class MovieRemoteDataSource extends DataSourceRepository {
         //return movies;
       } else {
         print("MovieRemoteDataSource file : getUpcoming method :: Else");
+        throw ServerFailure(
+            'Failed to fetch movies: ${response.statusMessage}');
+      }
+    } on DioError catch (e) {
+      throw ServerFailure.fromDioError(e);
+    }
+  }
+
+  @override
+  Future<DetailsModel> getDetails(int movieId) async {
+    final response = await Dio().get(ApiConstants.detail_URL(movieId));
+
+    try {
+      if (response.statusCode == 200) {
+        final data = response.data;
+        return DetailsModel.fromJson(data);
+      } else {
         throw ServerFailure(
             'Failed to fetch movies: ${response.statusMessage}');
       }

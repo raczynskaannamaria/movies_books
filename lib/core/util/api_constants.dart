@@ -14,4 +14,7 @@ class ApiConstants {
       'https://api.themoviedb.org/3/movie/upcoming?api_key=2e0db4bf985c85cdfdecd37bb37b42ec';
   static String image_URL(String path) =>
       'https://image.tmdb.org/t/p/w500$path';
+
+  static String detail_URL(int movieId) =>
+      'https://api.themoviedb.org/3/movie/$movieId?api_key=2e0db4bf985c85cdfdecd37bb37b42ec';
 }
