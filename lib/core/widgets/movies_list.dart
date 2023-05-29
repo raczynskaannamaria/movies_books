@@ -26,7 +26,7 @@ class MoviesList extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            DetailsPage(movieId: list[index].id)));
+                            DetailsPage(movieId: list[index].id,)));
               },
               child: ImageContainer(
                   image_URL: ApiConstants.image_URL(list[index].posterPath),

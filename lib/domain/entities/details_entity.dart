@@ -17,6 +17,22 @@ class DetailsEntity extends Equatable {
   final bool video;
   final double voteAverage;
 
+  const DetailsEntity({
+    required this.backdropPath,
+    required this.genres,
+    required this.id,
+    required this.originalLanguage,
+    required this.overview,
+    required this.popularity,
+    required this.posterPath,
+    required this.releaseDate,
+    required this.revenue,
+    required this.runtime,
+    required this.title,
+    required this.video,
+    required this.voteAverage,
+  });
+
   @override
   List<Object?> get props => [
         backdropPath,
@@ -33,20 +49,4 @@ class DetailsEntity extends Equatable {
         video,
         voteAverage,
       ];
-
-  const DetailsEntity({
-    required this.backdropPath,
-    required this.genres,
-    required this.id,
-    required this.originalLanguage,
-    required this.overview,
-    required this.popularity,
-    required this.posterPath,
-    required this.releaseDate,
-    required this.revenue,
-    required this.runtime,
-    required this.title,
-    required this.video,
-    required this.voteAverage,
-  });
 }

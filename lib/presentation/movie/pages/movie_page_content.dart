@@ -39,7 +39,7 @@ class MoviePageContent extends StatelessWidget {
                   );
 
                 case RequestState.loaded:
-                  return MoviesList(list: state.trendingMovies);
+                  return MoviesList(list: state.trendingMovies,);
 
                 case RequestState.error:
                   return const Center(

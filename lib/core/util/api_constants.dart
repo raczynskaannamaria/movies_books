@@ -17,4 +17,7 @@ class ApiConstants {
 
   static String detail_URL(int movieId) =>
       'https://api.themoviedb.org/3/movie/$movieId?api_key=2e0db4bf985c85cdfdecd37bb37b42ec';
+
+  static String cast_URL(int id) =>
+      'https://api.themoviedb.org/3/movie/$id/credits?api_key=2e0db4bf985c85cdfdecd37bb37b42ec';
 }
