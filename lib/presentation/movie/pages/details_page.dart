@@ -12,8 +12,10 @@ import 'package:movies_books/presentation/movie/components/text_details_componen
 
 class DetailsPage extends StatelessWidget {
   final int movieId;
+  
 
-  const DetailsPage({Key? key, required this.movieId}) : super(key: key);
+  const DetailsPage({Key? key, required this.movieId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,8 @@ class DetailsPage extends StatelessWidget {
                     MovieDetailsComponent(),
                     SizedBox(height: 30),
                     TextDetailsComponent(),
+                    SizedBox(height: 30),
+                    
                   ],
                 ),
               );
