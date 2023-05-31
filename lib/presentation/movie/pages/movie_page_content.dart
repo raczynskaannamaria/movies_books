@@ -29,70 +29,10 @@ class MoviePageContent extends StatelessWidget {
             body: SingleChildScrollView(
                 child: Column(children: [
           SearchSection(list: []),
-          const TitleSection(title: 'TRENDING', isLoading: true),
-          BlocBuilder<MovieBloc, MovieState>(
-            builder: (context, state) {
-              switch (state.trendingState) {
-                case RequestState.loading:
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-
-                case RequestState.loaded:
-                  return MoviesList(list: state.trendingMovies,);
-
-                case RequestState.error:
-                  return const Center(
-                    child: Text("Error"),
-                  );
-              }
-            },
-          ),
-          const TitleSection(title: "LATEST RELEASES", isLoading: true),
-          BlocBuilder<MovieBloc, MovieState>(builder: (context, state) {
-            switch (state.latestState) {
-              case RequestState.loading:
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              case RequestState.loaded:
-                return MoviesList(list: state.latestMovies);
-              case RequestState.error:
-                return const Center(
-                  child: Text("Error"),
-                );
-            }
-          }),
-          const TitleSection(title: "TOP RATED", isLoading: true),
-          BlocBuilder<MovieBloc, MovieState>(builder: (context, state) {
-            switch (state.topRatedState) {
-              case RequestState.loading:
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              case RequestState.loaded:
-                return MoviesList(list: state.topRatedMovies);
-              case RequestState.error:
-                return const Center(
-                  child: Text("Error"),
-                );
-            }
-          }),
-          const TitleSection(title: "UPCOMING", isLoading: true),
-          BlocBuilder<MovieBloc, MovieState>(builder: (context, state) {
-            switch (state.upcomingState) {
-              case RequestState.loading:
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              case RequestState.loaded:
-                return MoviesList(list: state.upcomingMovies);
-              case RequestState.error:
-                return const Center(
-                  child: Text("Error"),
-                );
-            }
-          }),
+          TitleSection(type: 1, title: 'TRENDING'),
+          TitleSection(type: 2, title: 'LATEST RELEASES'),
+          TitleSection(type: 3, title: 'TOP RATED'),
+          TitleSection(type: 4, title: 'UPCOMING'),
         ]))));
   }
 }

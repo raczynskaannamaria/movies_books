@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_books/core/resources/app_colors.dart';
+import 'package:movies_books/core/util/api_constants.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ImageContainer extends StatelessWidget {
@@ -21,8 +22,9 @@ class ImageContainer extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: CachedNetworkImage(
-                imageUrl: image_URL,
-                fit: BoxFit.cover,
+                imageUrl: ApiConstants.image_URL(image_URL),
+                fit: BoxFit.fill,
+                width: 130,
                 placeholder: (context, url) => Shimmer.fromColors(
                     baseColor: Colors.grey[300]!,
                     highlightColor: Colors.grey[100]!,
