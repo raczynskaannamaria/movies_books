@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:movies_books/core/util/enums.dart';
 import 'package:movies_books/domain/entities/movie_entity.dart';
 import 'package:movies_books/domain/usecases/get_latest_usecase.dart';
+import 'package:movies_books/domain/usecases/get_search_usecase.dart';
 import 'package:movies_books/domain/usecases/get_toprated_usecase.dart';
 import 'package:movies_books/domain/usecases/get_trending_usecase.dart';
 import 'package:movies_books/domain/usecases/get_upcoming_usecase.dart';

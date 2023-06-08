@@ -1,6 +1,7 @@
 part of 'movie_bloc.dart';
 
 class MovieState extends Equatable {
+
   final List<MovieEntity> trendingMovies;
   final RequestState trendingState;
   final String trendingMessage;
@@ -15,6 +16,7 @@ class MovieState extends Equatable {
   final String upcomingMessage;
 
   const MovieState({
+   
     this.trendingMovies = const [],
     this.trendingState = RequestState.loading,
     this.trendingMessage = '',
@@ -24,12 +26,13 @@ class MovieState extends Equatable {
     this.topRatedMovies = const [],
     this.topRatedState = RequestState.loading,
     this.topRatedMessage = '',
-     this.upcomingMovies = const [],
+    this.upcomingMovies = const [],
     this.upcomingState = RequestState.loading,
     this.upcomingMessage = '',
   });
 
   MovieState copyWith({
+    
     List<MovieEntity>? trendingMovies,
     RequestState? trendingState,
     String? trendingMessage,
@@ -44,6 +47,7 @@ class MovieState extends Equatable {
     String? upcomingMessage,
   }) {
     return MovieState(
+     
       trendingMovies: trendingMovies ?? this.trendingMovies,
       trendingState: trendingState ?? this.trendingState,
       trendingMessage: trendingMessage ?? this.trendingMessage,
@@ -60,7 +64,8 @@ class MovieState extends Equatable {
   }
 
   @override
-    List<Object?> get props => [
+  List<Object?> get props => [
+      
         trendingMovies,
         trendingState,
         trendingMessage,
@@ -75,6 +80,3 @@ class MovieState extends Equatable {
         upcomingMessage,
       ];
 }
-
-
-
