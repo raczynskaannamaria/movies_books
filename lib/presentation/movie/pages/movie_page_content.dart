@@ -11,6 +11,7 @@ import 'package:movies_books/core/widgets/movies_list.dart';
 import 'package:movies_books/core/widgets/title_section.dart';
 import 'package:movies_books/domain/entities/movie_entity.dart';
 import 'package:movies_books/presentation/movie/bloc/movie_bloc.dart';
+import 'package:movies_books/presentation/movie/bloc/search/search_bloc.dart';
 import 'package:movies_books/presentation/movie/pages/search_page.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -19,16 +20,21 @@ class MoviePageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (context) => getIt<MovieBloc>()
-          ..add(GetTrendingEvent())
-          ..add(GetLatestEvent())
-          ..add(GetTopRatedEvent())
-          ..add(GetUpcomingEvent()),
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => getIt<MovieBloc>()
+              ..add(GetTrendingEvent())
+              ..add(GetLatestEvent())
+              ..add(GetTopRatedEvent())
+              ..add(GetUpcomingEvent()),
+          ),
+          BlocProvider(create: (context) => getIt<SearchBloc>())
+        ],
         child: Scaffold(
             body: SingleChildScrollView(
                 child: Column(children: [
-          SearchSection(list: []),
+          SearchSection(),
           TitleSection(type: 1, title: 'TRENDING'),
           TitleSection(type: 2, title: 'LATEST RELEASES'),
           TitleSection(type: 3, title: 'TOP RATED'),
@@ -38,8 +44,7 @@ class MoviePageContent extends StatelessWidget {
 }
 
 class SearchSection extends StatelessWidget {
-  final List<MovieEntity> list;
-  const SearchSection({super.key, required this.list});
+  const SearchSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,11 +55,12 @@ class SearchSection extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SearchPage(),
-                  ));
+              showSearch(
+                context: context,
+                delegate: SearchPage(
+                  BlocProvider.of<SearchBloc>(context),
+                ),
+              );
             },
             child: Container(
               margin: EdgeInsets.only(top: 20),

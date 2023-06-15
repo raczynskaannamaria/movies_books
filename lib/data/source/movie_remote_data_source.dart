@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:movies_books/core/error/failure.dart';
+import 'package:movies_books/core/resources/app_colors.dart';
+import 'package:movies_books/core/util/api_client.dart';
 import 'package:movies_books/core/util/api_constants.dart';
 import 'package:movies_books/data/models/cast_model.dart';
 import 'package:movies_books/data/models/details_model.dart';
@@ -7,15 +9,46 @@ import 'package:movies_books/data/models/movie_model.dart';
 import 'package:movies_books/domain/entities/cast_entity.dart';
 
 abstract class DataSourceRepository {
+  Future<List<MovieModel>> getSearch(String searchTerm);
   Future<List<MovieModel>> getTrending();
   Future<List<MovieModel>> getLatest();
   Future<List<MovieModel>> getTopRated();
   Future<List<MovieModel>> getUpcoming();
   Future<DetailsModel> getDetails(int movieId);
-  Future<List<CastModel>> getCast(int id);
+  Future<List<CastModel>> getCast(int movieId);
 }
 
 class MovieRemoteDataSource extends DataSourceRepository {
+  final ApiClient _client;
+
+  MovieRemoteDataSource(this._client);
+  @override
+  Future<List<MovieModel>> getSearch(String searchTerm) async {
+    try {
+      final response = await Dio().get(ApiConstants.search_URL(searchTerm));
+      if (response.statusCode == 200) {
+        final results = response.data['results'] as List;
+
+        if (results != null) {
+          final List<MovieModel> movies = List<MovieModel>.from(
+            results.map((json) => MovieModel.fromJson(json)),
+          );
+          return movies;
+        } else {
+          print(
+              "MovieRemoteDataSource file: Search method: Results data is null");
+          return []; // Return an empty list when results data is null
+        }
+      } else {
+        print("MovieRemoteDataSource file : Search method :: Else");
+        throw ServerFailure(
+            'Failed to fetch movies: ${response.statusMessage}');
+      }
+    } on DioError catch (e) {
+      throw ServerFailure.fromDioError(e);
+    }
+  }
+
   @override
   Future<List<MovieModel>> getTrending() async {
     try {
@@ -135,15 +168,20 @@ class MovieRemoteDataSource extends DataSourceRepository {
 
   @override
   Future<DetailsModel> getDetails(int movieId) async {
-    final response = await Dio().get(ApiConstants.detail_URL(movieId));
+    final detailResponse = await Dio().get(ApiConstants.detail_URL(movieId));
+    final castResponse = await Dio().get(ApiConstants.cast_URL(movieId));
 
     try {
-      if (response.statusCode == 200) {
-        final data = response.data;
-        return DetailsModel.fromJson(data);
+      if (detailResponse.statusCode ==
+          200 /*&& castResponse.statusCode == 200*/) {
+        final detailData = detailResponse.data;
+        /*final castData = castResponse.data;*/
+        return DetailsModel.fromJson(
+          detailData, /*castData*/
+        );
       } else {
         throw ServerFailure(
-            'Failed to fetch movies: ${response.statusMessage}');
+            'Failed to fetch movies: ${detailResponse.statusMessage}');
       }
     } on DioError catch (e) {
       throw ServerFailure.fromDioError(e);
@@ -151,10 +189,10 @@ class MovieRemoteDataSource extends DataSourceRepository {
   }
 
   @override
-  Future<List<CastModel>> getCast(int id) async {
-     final response = await Dio().get(ApiConstants.cast_URL(id));
+  Future<List<CastModel>> getCast(int movieId) async {
+    final response = await Dio().get(ApiConstants.cast_URL(movieId));
     try {
-     if (response.statusCode == 200) {
+      if (response.statusCode == 200) {
         final results = response.data['results'];
         if (results != null) {
           final List<CastModel> cast = List<CastModel>.from(

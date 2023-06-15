@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:movies_books/core/error/failure.dart';
 import 'package:movies_books/data/models/cast_model.dart';
+import 'package:movies_books/data/models/movie_model.dart';
 import 'package:movies_books/data/repository/base_repository.dart';
 import 'package:movies_books/data/source/movie_remote_data_source.dart';
 import 'package:movies_books/domain/entities/cast_entity.dart';
@@ -11,6 +12,16 @@ class BaseRepositoryImpl extends BaseRepository {
   DataSourceRepository dataSourceRepository;
 
   BaseRepositoryImpl(this.dataSourceRepository);
+
+  @override
+  Future<Either<Failure, List<MovieModel>>> getSearch(String searchTerm) async {
+    final result = await dataSourceRepository.getSearch(searchTerm);
+    try {
+      return Right(result);
+    } on ServerFailure catch (failure) {
+      return Left(failure);
+    }
+  }
 
   @override
   Future<Either<Failure, List<MovieEntity>>> getTrending() async {
@@ -62,9 +73,9 @@ class BaseRepositoryImpl extends BaseRepository {
     }
   }
 
-   @override
-  Future<Either<Failure, List<CastModel >>> getCast(int id) async {
-    final result = await dataSourceRepository.getCast(id);
+  @override
+  Future<Either<Failure, List<CastEntity>>> getCast(int movieId) async {
+    final result = await dataSourceRepository.getCast(movieId);
     try {
       return Right(result);
     } on ServerFailure catch (failure) {

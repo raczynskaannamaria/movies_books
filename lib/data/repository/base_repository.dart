@@ -5,6 +5,8 @@ import 'package:movies_books/domain/entities/details_entity.dart';
 import 'package:movies_books/domain/entities/movie_entity.dart';
 
 abstract class BaseRepository {
+  Future<Either<Failure, List<MovieEntity>>> getSearch(String searchTerm);
+
   Future<Either<Failure, List<MovieEntity>>> getTrending();
 
   Future<Either<Failure, List<MovieEntity>>> getLatest();
@@ -15,5 +17,5 @@ abstract class BaseRepository {
 
   Future<Either<Failure, DetailsEntity>> getDetails(int movieId);
 
-  Future<Either<Failure, List<CastEntity>>> getCast(int id);
+  Future<Either<Failure, List<CastEntity>>> getCast(int movieId);
 }

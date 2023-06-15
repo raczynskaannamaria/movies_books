@@ -12,12 +12,16 @@ class ApiConstants {
       'https://api.themoviedb.org/3/movie/top_rated?api_key=2e0db4bf985c85cdfdecd37bb37b42ec';
   static const String upcoming_URL =
       'https://api.themoviedb.org/3/movie/upcoming?api_key=2e0db4bf985c85cdfdecd37bb37b42ec';
+  static String search_URL(String searchTerm) {
+    return 'https://api.themoviedb.org/3/search/movie?api_key=2e0db4bf985c85cdfdecd37bb37b42ec&query=$searchTerm';
+  }
+
   static String image_URL(String path) =>
       'https://image.tmdb.org/t/p/w500$path';
 
   static String detail_URL(int movieId) =>
       'https://api.themoviedb.org/3/movie/$movieId?api_key=2e0db4bf985c85cdfdecd37bb37b42ec';
 
-  static String cast_URL(int id) =>
-      'https://api.themoviedb.org/3/movie/$id/credits?api_key=2e0db4bf985c85cdfdecd37bb37b42ec';
+  static String cast_URL(int movieId) =>
+      'https://api.themoviedb.org/3/movie/$movieId/credits?api_key=2e0db4bf985c85cdfdecd37bb37b42ec';
 }
