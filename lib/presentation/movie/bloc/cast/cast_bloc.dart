@@ -14,9 +14,11 @@ class CastBloc extends Bloc<CastEvent, CastState> {
   CastBloc({required this.getCastUseCase})
       : super(const CastState(state: RequestState.loading)) {
     on<GetCastEvent>(((event, emit) async {
-      final result = await getCastUseCase.execute(event.id);
-      result.fold((failure) => emit(state.copyWith(state: RequestState.error)),
-          (cast) => emit(state.copyWith(state: RequestState.loaded, castEntity: cast)));
+      final result = await getCastUseCase.execute(event.movieId);
+      result.fold(
+          (failure) => emit(state.copyWith(state: RequestState.error)),
+          (cast) => emit(
+              state.copyWith(state: RequestState.loaded, castEntity: cast)));
     }));
   }
 }

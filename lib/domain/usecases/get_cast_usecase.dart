@@ -8,7 +8,7 @@ class GetCastUseCase {
 
   GetCastUseCase(this.baseRepository);
 
-  Future<Either<Failure, List<CastEntity>>> execute(int id) async {
-    return await baseRepository.getCast(id);
+  Future<Either<Failure, List<CastEntity>>> execute(int movieId) async {
+    return await baseRepository.getCast(movieId);
   }
 }

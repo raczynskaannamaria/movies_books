@@ -1,10 +1,54 @@
+import 'dart:ffi';
+
 import 'package:movies_books/domain/entities/cast_entity.dart';
 
 class CastModel extends CastEntity {
+  factory CastModel.fromJson(Map<String, dynamic> json) {
+    return CastModel(
+      adult: json['adult'],
+      gender: json['gender'] ?? 0.0,
+      id: json['id'] ?? 0.0,
+      knownForDepartment: json['known_for_department'] ?? '',
+      name: json['name'] ?? '',
+      originalName: json['original_name'] ?? '',
+      popularity: json['popularity'],
+      profilePath: json['profile_path'] ?? '',
+      castId: json['cast_id'] ?? 0.0,
+      character: json['character'] ?? '',
+      creditId: json['credit_id'] ?? 0.0,
+      order: json['order'] ?? 0.0,
+    );
+  }
+  const CastModel({
+    required bool adult,
+    required int gender,
+    required int id,
+    required String knownForDepartment,
+    required String name,
+    required String originalName,
+    required double popularity,
+    required String profilePath,
+    required int castId,
+    required String character,
+    required int creditId,
+    required int order,
+  }) : super(
+          creditId: creditId,
+          name: name,
+          profilePath: profilePath,
+          character: character,
+        );
+
+  static List<CastModel> from(List<dynamic> json) {
+    return json.map((e) => CastModel.fromJson(e)).toList();
+  }
+}
+
+/*class CastModel extends CastEntity {
   final int castId;
   final String character;
   final int creditId;
-  final int gender;
+  final String gender;
   final int id;
   final String name;
   final int order;
@@ -22,20 +66,20 @@ class CastModel extends CastEntity {
   }) : super(
           creditId: creditId,
           name: name,
-          posterPath: profilePath,
+          profilePath: profilePath,
           character: character,
         );
 
   factory CastModel.fromJson(Map<String, dynamic> json) {
     return CastModel(
-      castId: json['cast_id'],
-      character: json['character'],
-      creditId: json['credit_id'],
-      gender: json['gender'],
-      id: json['id'],
-      name: json['name'],
-      order: json['order'],
-      profilePath: json['profile_path'],
+      castId: json['cast_id'] ?? 0,
+      character: json['character'] ?? '',
+      creditId: json['credit_id'] ?? 0,
+      gender: json['gender'] ?? '',
+      id: json['id'] ?? 0,
+      name: json['name'] ?? '',
+      order: json['order'] ?? 0,
+      profilePath: json['profile_path'] ?? '',
     );
   }
 
@@ -51,4 +95,8 @@ class CastModel extends CastEntity {
     data['profile_path'] = this.profilePath;
     return data;
   }
-}
+
+  static List<CastModel> from(List<dynamic> json) {
+    return json.map((e) => CastModel.fromJson(e)).toList();
+  }
+}*/

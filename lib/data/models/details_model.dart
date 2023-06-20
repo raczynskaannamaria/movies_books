@@ -1,14 +1,13 @@
+import 'package:movies_books/data/models/cast_model.dart';
 import 'package:movies_books/data/models/genre_model.dart';
 import 'package:movies_books/domain/entities/details_entity.dart';
 
 class DetailsModel extends DetailsEntity {
-  factory DetailsModel.fromJson(Map<String, dynamic> json) {
+  factory DetailsModel.fromJson(
+      Map<String, dynamic> json,/* Map<String, dynamic> castData*/) {
     return DetailsModel(
       backdropPath: json['backdrop_path']!,
-      genres: json['genres'] != null
-          ? List<GenreModel>.from(
-              json['genres'].map((genre) => GenreModel.fromJson(genre)))
-          : null,
+      genres: GenreModel.from(json['genres']),
       id: json['id'],
       originalLanguage: json['original_language'],
       overview: json['overview'],
@@ -20,20 +19,38 @@ class DetailsModel extends DetailsEntity {
       title: json['title'],
       video: json['video'],
       voteAverage: json['vote_average'].toDouble(),
+      /*cast: CastModel.from(castData)*/
     );
   }
-  const DetailsModel(
-      {required super.backdropPath,
-      required super.genres,
-      required super.id,
-      required super.originalLanguage,
-      required super.overview,
-      required super.popularity,
-      required super.posterPath,
-      required super.releaseDate,
-      required super.revenue,
-      required super.runtime,
-      required super.title,
-      required super.video,
-      required super.voteAverage});
+  const DetailsModel({
+    required String backdropPath,
+    required List<GenreModel> genres,
+    required int id,
+    required String originalLanguage,
+    required String overview,
+    required double popularity,
+    required String posterPath,
+    required String releaseDate,
+    required int revenue,
+    required int runtime,
+    required String title,
+    required bool video,
+    required double voteAverage,
+   /* required List<CastModel> cast,*/
+  }) : super(
+          backdropPath: backdropPath,
+          genres: genres,
+          id: id,
+          originalLanguage: originalLanguage,
+          overview: overview,
+          popularity: popularity,
+          posterPath: posterPath,
+          releaseDate: releaseDate,
+          revenue: revenue,
+          runtime: runtime,
+          title: title,
+          video: video,
+          voteAverage: voteAverage,
+          /*cast: cast,*/
+        );
 }

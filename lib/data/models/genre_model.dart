@@ -15,5 +15,10 @@ class GenreModel extends GenreEntity {
       id: json['id'],
       name: json['name'],
     );
+
+  }
+
+  static List<GenreModel> from(List<dynamic> json) {
+    return json.map((e) => GenreModel.fromJson(e)).toList();
   }
 }

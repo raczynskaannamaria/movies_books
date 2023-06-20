@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:movies_books/domain/entities/cast_entity.dart';
 import 'package:movies_books/domain/entities/genre_entity.dart';
 
 class DetailsEntity extends Equatable {
@@ -16,6 +17,7 @@ class DetailsEntity extends Equatable {
   final String title;
   final bool video;
   final double voteAverage;
+  /* final List<CastEntity> cast;*/
 
   const DetailsEntity({
     required this.backdropPath,
@@ -31,6 +33,7 @@ class DetailsEntity extends Equatable {
     required this.title,
     required this.video,
     required this.voteAverage,
+    /* required this.cast,*/
   });
 
   @override
@@ -48,5 +51,6 @@ class DetailsEntity extends Equatable {
         title,
         video,
         voteAverage,
+        // cast
       ];
 }
