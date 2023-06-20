@@ -7,10 +7,10 @@ import 'package:movies_books/core/login/account/my_account_page_content.dart';
 import 'package:movies_books/core/login/auth/user_profile.dart';
 import 'package:movies_books/core/resources/app_colors.dart';
 import 'package:movies_books/presentation/tv/TV_page_content.dart';
-import 'package:movies_books/presentation/book/book_page_content.dart';
-import 'package:movies_books/presentation/game/game_page_content.dart';
+import 'package:movies_books/presentation/favourite/favourite_page_content.dart';
+
 import 'package:movies_books/presentation/movie/pages/movie_page_content.dart';
-import 'package:movies_books/presentation/wishlist/wishlist_page_content.dart';
+import 'package:movies_books/presentation/watchlist/watchlist_page_content.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key, required this.currentUser}) : super(key: key);
@@ -52,13 +52,10 @@ class _HomePageState extends State<HomePage> {
           return TVPageContent();
         }
         if (currentIndex == 2) {
-          return WishlistPageContent();
+          return WatchlistPageContent();
         }
         if (currentIndex == 3) {
-          return BookPageContent();
-        }
-        if (currentIndex == 4) {
-          return GamePageContent();
+          return FavouritePageContent();
         }
 
         return MyAccountPageContent(email: widget.currentUser.email);
@@ -89,22 +86,15 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.favorite_outline_rounded,
+              Icons.bookmark_border,
               color: currentIndex == 2 ? AppColor.burntSienna : AppColor.cello,
             ),
             label: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.book_outlined,
+              Icons.favorite_border,
               color: currentIndex == 3 ? AppColor.burntSienna : AppColor.cello,
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.videogame_asset_outlined,
-              color: currentIndex == 4 ? AppColor.burntSienna : AppColor.cello,
             ),
             label: '',
           ),

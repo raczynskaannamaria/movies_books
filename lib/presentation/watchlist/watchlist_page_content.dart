@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class WishlistPageContent extends StatelessWidget {
-  const WishlistPageContent({Key? key}) : super(key: key);
+class WatchlistPageContent extends StatelessWidget {
+  const WatchlistPageContent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
